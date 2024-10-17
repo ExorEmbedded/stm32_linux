@@ -901,18 +901,17 @@
 	    red@0 {
 		    label = "red";
 		    reg = <0>;
-		    linux,default-trigger = "none";
-	      
+		    linux,default-trigger = "default-on";
 	    };
 	    green@1 {
 		    label = "green";
 		    reg = <1>;
-		    linux,default-trigger = "none";
+		    linux,default-trigger = "default-on";
 	    };
 	    blue@2 {
 		    label = "blue";
 		    reg = <2>;
-		    linux,default-trigger = "none";
+		    linux,default-trigger = "default-on";
 	    };
 	    unused@3 {
 		    label = "unused";
