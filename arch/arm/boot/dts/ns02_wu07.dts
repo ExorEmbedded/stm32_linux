@@ -254,9 +254,10 @@
 	};
 
 	panel_rgb: panel-rgb {
-		compatible = "exor,hw_dispid";
+		compatible = "exor,hw_dispid_24bpp";
 		backlight = <&backlight>;
 		status = "okay";
+		24bpp_fb;
 		port {
 			panel_in_rgb: endpoint {
 				remote-endpoint = <&ltdc_out_rgb>;

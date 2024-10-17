@@ -162,6 +162,9 @@ static int stm_drm_platform_probe(struct platform_device *pdev)
 	struct device *dev = &pdev->dev;
 	struct drm_device *ddev;
 	int ret;
+	int fb_bpp = 16;
+	struct device_node* panel_node;
+
 
 	DRM_DEBUG("%s\n", __func__);
 
@@ -179,7 +182,16 @@ static int stm_drm_platform_probe(struct platform_device *pdev)
 	if (ret)
 		goto err_put;
 
-	drm_fbdev_generic_setup(ddev, 16);
+	//On WU07 panels, use 32bpp framebuffer
+	panel_node = of_find_node_by_name(NULL, "panel-rgb");
+	if (panel_node)
+	{
+		if (of_find_property(panel_node, "24bpp_fb", NULL))
+			fb_bpp = 32;
+		of_node_put(panel_node);
+	}
+
+	drm_fbdev_generic_setup(ddev, fb_bpp);
 
 	return 0;
 

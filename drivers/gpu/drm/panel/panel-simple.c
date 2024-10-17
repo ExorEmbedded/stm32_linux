@@ -2431,6 +2431,17 @@ static const struct panel_desc exor_hwdispid = {
 	},
 };
 
+static const struct panel_desc exor_hwdispid_24bpp = {
+	.modes = &exor_hwdispid_mode,
+	.num_modes = 1,
+	.bpc = 8,
+	.size = {
+		.width = 152,
+		.height = 91,
+	},
+	.bus_format = MEDIA_BUS_FMT_RGB888_1X24,
+};
+
 static const struct of_device_id platform_of_match[] = {
 	{
 		.compatible = "ampire,am-480272h3tmqw-t01h",
@@ -2684,6 +2695,9 @@ static const struct of_device_id platform_of_match[] = {
 	}, {
 		.compatible = "exor,hw_dispid",
 		.data = &exor_hwdispid,
+	}, {
+		.compatible = "exor,hw_dispid_24bpp",
+		.data = &exor_hwdispid_24bpp,
 	}, {
 		/* sentinel */
 	}
